@@ -10,7 +10,11 @@ if __name__ == '__main__':
         4. Исключаем из анализа данный проект
     
     """
+    theme_names = []
     path_handler = path_handler()
-    # print(path_handler.tree())
-    for theme_name in path_handler.tree():
-        print(theme_name)
+    for theme in path_handler.ls_of_themes():       # theme.name
+        theme_names.append(theme.name)
+
+    theme_names.sort()
+    for theme in theme_names:
+        print(theme)            # Вывод тем по алфавиту
