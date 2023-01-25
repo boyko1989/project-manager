@@ -1,0 +1,5 @@
+venv
+.idea/
+.aaa/
+__pycache__
+expir.py
