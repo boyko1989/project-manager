@@ -3,3 +3,4 @@ venv
 .aaa/
 __pycache__
 expir.py
+.env
