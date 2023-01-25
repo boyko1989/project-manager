@@ -1,4 +1,5 @@
 from assistant.PathClass import PathClass as path_handler
+# import expir
 
 if __name__ == '__main__':
     """Просматриваем все каталоги и подкаталоги от этого уровня и ниже
@@ -11,10 +12,12 @@ if __name__ == '__main__':
     
     """
     theme_names = []
-    path_handler = path_handler()
-    for theme in path_handler.ls_of_themes():       # theme.name
-        theme_names.append(theme.name)
+    dict_of_themes = path_handler().ls_of_themes()
+    for theme in dict_of_themes:
+        theme_names.append(theme)
 
     theme_names.sort()
-    for theme in theme_names:
-        print(theme)            # Вывод тем по алфавиту
+    for theme in theme_names:       # Вывод тем по алфавиту
+        print(f'{theme:<14}{dict_of_themes[theme]}')
+
+    # expir.expir()
