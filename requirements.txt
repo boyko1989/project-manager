@@ -2,3 +2,4 @@ pip==22.3.1
 python-dotenv==0.21.1
 setuptools==66.1.1
 PyYAML==6.0
+peewee==3.15.4

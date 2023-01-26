@@ -5,3 +5,4 @@ __pycache__
 expir.py
 .env
 note
+*.sqlite
