@@ -1,9 +1,7 @@
-from settings import db
+from Models import *
 
 # Core Functionality
-db.connect()
+with db:
+    db.create_tables([ThemeModel, ProjectModel])
 
-# some logic. Classes, Functions
-
-db.commit()
-db.close()
+print('Done')
