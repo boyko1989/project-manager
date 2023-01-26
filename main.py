@@ -1,4 +1,5 @@
-from assistant.PathClass import PathClass as path_handler
+from assistant.Indexator import Indexator as path_handler
+from assistant.Viewer import Viewer as view
 # import expir
 
 if __name__ == '__main__':
@@ -11,13 +12,13 @@ if __name__ == '__main__':
         4. Исключаем из анализа данный проект
     
     """
-    theme_names = []
     dict_of_themes = path_handler().ls_of_themes()
-    for theme in dict_of_themes:
-        theme_names.append(theme)
+    theme_sort = view()
+    theme_sort.sorter(dict_of_themes)
 
-    theme_names.sort()
-    for theme in theme_names:       # Вывод тем по алфавиту
-        print(f'{theme:<14}{dict_of_themes[theme]}')
+    print('------------------')
 
+    dict_of_projects = path_handler().ls_of_projects()
+    projects_sort = view()
+    theme_sort.sorter(dict_of_projects)
     # expir.expir()
