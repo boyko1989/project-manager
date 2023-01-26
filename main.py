@@ -12,13 +12,25 @@ if __name__ == '__main__':
         4. Исключаем из анализа данный проект
     
     """
-    dict_of_themes = path_handler().ls_of_themes()
-    theme_sort = view()
-    theme_sort.sorter(dict_of_themes)
 
-    print('------------------')
+    th_kwargs = {
+        'type_fild': 'type',
+        'type_of_search': 'theme',
+    }
 
-    dict_of_projects = path_handler().ls_of_projects()
-    projects_sort = view()
-    theme_sort.sorter(dict_of_projects)
-    # expir.expir()
+    th = path_handler()
+    th_view = view()
+    dict_of_themes = th.dir_travel(th.fild_search, th_kwargs)
+    th_view.sorter(dict_of_themes)
+
+    print('-----------------------------')
+
+    pr_kwargs = {
+        'type_fild': 'type',
+        'type_of_search': 'project',
+    }
+
+    pr = path_handler()
+    pr_view = view()
+    dict_of_projects = pr.dir_travel(pr.fild_search, pr_kwargs)
+    pr_view.sorter(dict_of_projects)
