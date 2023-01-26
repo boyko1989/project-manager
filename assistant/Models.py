@@ -1,15 +1,6 @@
-from peewee import *
+import settings
 
-# Set DataBase
+# Define Models
 # ------------------------------------
 
-# Set DataBase
-# ------------------------------------
 
-# Core Functionality
-db.connect()
-
-# some logic. Classes, Functions
-
-db.commit()
-db.close()
