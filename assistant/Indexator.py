@@ -1,5 +1,7 @@
 import os
 import yaml
+import random
+import hashlib
 from settings import BASEDIR
 
 
@@ -27,7 +29,13 @@ class Indexator:
             yml_path = path_to_dir + '/.aaa/.aaa.yml'
 
             if os.path.exists(yml_path):
+
+                # !!! Вызов коллбэка !!!
                 dict_back = callback(yml_path, **kwargs)
+
+                # TODO в дальнейшем сделать метод универсальным на return
+                # Сделать проверку на то, что возвращает callback
+                # Словари и списки обрабатывать разными способами
                 if len(dict_back) != 0:
                     dict_value = list(dict_back.values())[0]
                     dict_key = list(dict_back.keys())[0]
@@ -60,11 +68,21 @@ class Indexator:
     def values_search(self, yml_path, **kwargs):
         """Метод должен возвращать список уникальных значений по ключам
 
-        Например, если нужно узнать список всех тем
-        Или список всех проектов
+        Например, если нужно узнать список всех тем или список всех проектов
 
         """
-        pass
+        dict_back = {}
+        with open(yml_path) as yml_file:
+            yml = yaml.safe_load(yml_file)
+
+            # создание случайного ключа
+            head = random.randint(1, 10000000000)
+            tail = random.randint(1, 10000000000)
+            key = hashlib.md5(str(head + tail).encode()).hexdigest()
+            dict_back[key] = yml[kwargs['type_fild']]
+
+        return dict_back
+
 
 if __name__ == '__main__':
     pass

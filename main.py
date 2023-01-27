@@ -1,5 +1,6 @@
 from assistant.Indexator import Indexator as path_handler
 from assistant.Viewer import Viewer as view
+
 # import expir
 
 if __name__ == '__main__':
@@ -34,3 +35,14 @@ if __name__ == '__main__':
     pr_view = view()
     dict_of_projects = pr.dir_travel(pr.fild_search, pr_kwargs)
     pr_view.sorter(dict_of_projects)
+
+    print('-----------------------------')
+
+    types_kwargs = {
+        'type_fild': 'type',
+    }
+
+    types = path_handler()
+    types_view = view()
+    dict_of_types = types.dir_travel(types.values_search, types_kwargs)
+    types_view.sorter_keys(dict_of_types)
