@@ -17,10 +17,10 @@ args = parser.parse_args()
 
 
 def git_remote(arg, path=all):
-    # print(arg)
     gitr = depl()
+    gitr_view = view()
     dict_of_remote = gitr.git_remote_search(path)
-    print(dict_of_remote)
+    gitr_view.sorter(dict_of_remote)
 
 
 def get(arg):

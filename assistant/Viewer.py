@@ -6,7 +6,7 @@ class Viewer:
 
         essence_list.sort()
         for key in essence_list:  # Вывод ключей по алфавиту
-            print(f'{key:<14}{dict_of_essence[key]}')
+            print(f'{key:<54}{dict_of_essence[key]}')
 
     def sorter_keys(self, dict_of_essence):
         essence_list = []
