@@ -3,10 +3,11 @@ import yaml
 import random
 import hashlib
 from settings import BASEDIR
+from assistant.Array_functions import Array_functions as pthc # path cleaner
 
 
 class Indexator:
-    """"""
+    """Класс для обхода каталогов"""
 
     def __init__(self):
         self.pth = __file__
@@ -31,7 +32,9 @@ class Indexator:
             if os.path.exists(yml_path):
 
                 # !!! Вызов коллбэка !!!
+                # , который должен вернуть словарь
                 dict_back = callback(yml_path, **kwargs)
+                # print(dict_back)
 
                 # TODO в дальнейшем сделать метод универсальным на return
                 # Сделать проверку на то, что возвращает callback
@@ -55,12 +58,7 @@ class Indexator:
         with open(yml_path) as yml_file:
             yml = yaml.safe_load(yml_file)
             if yml[kwargs['type_fild']] == kwargs['type_of_search']:
-                essent_path = yml_path.split('/')
-
-                del essent_path[-1]
-                del essent_path[-1]
-
-                essent_path = '/'.join(essent_path)
+                essent_path = pthc.aaa_del(yml_path)
                 dict_back[yml['name']] = essent_path
 
         return dict_back

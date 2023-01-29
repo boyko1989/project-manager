@@ -1,5 +1,6 @@
 from assistant.Indexator import Indexator as path_handler
 from assistant.Viewer import Viewer as view
+from assistant.Deploy import Deploy as depl
 import argparse
 
 # import expir
@@ -10,8 +11,16 @@ parser = argparse.ArgumentParser(
 )
 parser.add_argument('-g', '--get', type=str, default='')
 parser.add_argument('-l', '--lst', type=str, default='')
+parser.add_argument('-gr', '--gitr', type=str)
 
 args = parser.parse_args()
+
+
+def git_remote(arg, path=all):
+    # print(arg)
+    gitr = depl()
+    dict_of_remote = gitr.git_remote_search(path)
+    print(dict_of_remote)
 
 
 def get(arg):
@@ -42,3 +51,7 @@ if __name__ == '__main__':
         get(args.get)
     elif args.lst != '':
         lst(args.lst)
+    elif args.gitr != '':
+        git_remote(args.gitr, '.')
+    else:
+        print('Должны быть введены аргументы')
