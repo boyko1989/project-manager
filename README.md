@@ -14,6 +14,7 @@
 type: theme
 name: Python
 description: 'Проекты на языке Python'
+status: Deprecation
 parent: 'root'
 author: 'p_boyko'
 ```
