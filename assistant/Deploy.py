@@ -23,14 +23,19 @@ class Deploy:
 
         if os.path.exists(path_git):
             os.chdir(path)
+            comand = subprocess.check_output(['git', 'remote', '-v'])
+            if comand == b'':
+                item_remote_path = None
+            else:
+                item_remote_path = comand.decode(encoding='utf-8') \
+                    .split('\n')[1] \
+                    .split('\t')[1] \
+                    .split(' ')[0]
 
-            item_remote_path = subprocess.check_output(['git', 'remote', '-v']) \
-                .decode(encoding='utf-8') \
-                .split('\n')[1] \
-                .split('\t')[1] \
-                .split(' ')[0]
             os.chdir(base_path)
-            dict_of_remote[path] = item_remote_path
+
+            if item_remote_path != b'':
+                dict_of_remote[path] = item_remote_path
 
         return dict_of_remote
 
